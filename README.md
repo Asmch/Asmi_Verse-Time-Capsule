@@ -340,9 +340,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- **Email**: support@asmiverse.com
-- **Discord**: [Join our community](https://discord.gg/asmiverse)
-- **Issues**: [GitHub Issues](https://github.com/yourusername/asmiverse/issues)
+- **Email**: asmitachoudhary08@gmail.com
+- **GitHub**: [Asmch](https://github.com/Asmch)
+- **Issues**: [GitHub Issues](https://github.com/Asmch/asmiverse/issues)
+- **LinkedIn**: [Asmita Kumari](https://www.linkedin.com/in/asmita-x/)
 
 ## 🗺️ Roadmap
 
@@ -355,8 +356,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Made with ❤️ by [Your Name]**
+**Made with ❤️ by Asmita**
 
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/asmiverse?style=social)](https://github.com/yourusername/asmiverse)
-[![GitHub forks](https://img.shields.io/github/forks/yourusername/asmiverse?style=social)](https://github.com/yourusername/asmiverse)
-[![GitHub issues](https://img.shields.io/github/issues/yourusername/asmiverse)](https://github.com/yourusername/asmiverse/issues)
+[![GitHub stars](https://img.shields.io/github/stars/Asmch/asmiverse?style=social)](https://github.com/Asmch/asmiverse)
+[![GitHub forks](https://img.shields.io/github/forks/Asmch/asmiverse?style=social)](https://github.com/Asmch/asmiverse)
+[![GitHub issues](https://img.shields.io/github/issues/Asmch/asmiverse)](https://github.com/Asmch/asmiverse/issues)
