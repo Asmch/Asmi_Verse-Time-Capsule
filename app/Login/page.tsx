@@ -69,19 +69,19 @@ const LoginPage = () => {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { type: "spring", stiffness: 100 },
+      transition: { type: "spring", stiffness: 100 } as any,
     },
-  };
+  } as any;
 
   const buttonVariants = {
     initial: { scale: 1 },
     hover: {
       scale: 1.05,
       backgroundColor: "#6D28D9",
-      transition: { type: "spring", stiffness: 400 },
+      transition: { type: "spring", stiffness: 400 } as any,
     },
     tap: { scale: 0.95 },
-  };
+  } as any;
 
   return (
     <div className="relative flex justify-center items-center min-h-screen bg-gradient-to-br from-purple-900 via-black to-blue-900 text-white px-2 sm:px-4 overflow-hidden">
