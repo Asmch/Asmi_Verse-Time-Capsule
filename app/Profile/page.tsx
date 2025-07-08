@@ -58,7 +58,7 @@ export default function ProfilePage() {
       <motion.div
         initial={{ scale: 0.8 }}
         animate={{ scale: 1 }}
-        transition={{ type: 'spring', stiffness: 100 }}
+        transition={{ type: 'spring', stiffness: 100 } as any}
         className="w-full max-w-md p-6 sm:p-10 bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-purple-400/20 z-10"
       >
         <div className="flex flex-col items-center space-y-4">

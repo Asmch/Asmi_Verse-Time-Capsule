@@ -14,7 +14,7 @@ const Enhanced3DEffect = ({ handleCTAClick }: { handleCTAClick: () => void }) =>
     hidden: { opacity: 0, scale: 0.8 },
     visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
     hover: { scale: 1.02, boxShadow: '0 0 20px rgba(128, 0, 255, 0.5)' }
-  };
+  } as any;
 
   // Move particles state outside the callback
   type Particle = { width: number; height: number; left: number; top: number; y: number; duration: number; delay: number };
