@@ -90,19 +90,19 @@ const JoinUs = () => {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { type: 'spring', stiffness: 100 },
+      transition: { type: 'spring', stiffness: 100 } as any,
     },
-  }
+  } as any;
 
   const buttonVariants = {
     initial: { scale: 1 },
     hover: {
       scale: 1.05,
       backgroundColor: '#6D28D9',
-      transition: { type: 'spring', stiffness: 400 },
+      transition: { type: 'spring', stiffness: 400 } as any,
     },
     tap: { scale: 0.95 },
-  }
+  } as any;
 
   // Redirect if signup was successful
   if (isSignupSuccessful) {
@@ -179,7 +179,7 @@ const JoinUs = () => {
               <div className="relative">
                 <motion.input
                   whileFocus={{ scale: 1.02, borderColor: '#8B5CF6' }}
-                  transition={{ type: 'spring', stiffness: 300 }}
+                  transition={{ type: 'spring', stiffness: 300 } as any}
                   type="text"
                   id="name"
                   value={name}
@@ -196,7 +196,7 @@ const JoinUs = () => {
               <div className="relative">
                 <motion.input
                   whileFocus={{ scale: 1.02, borderColor: '#8B5CF6' }}
-                  transition={{ type: 'spring', stiffness: 300 }}
+                  transition={{ type: 'spring', stiffness: 300 } as any}
                   type="email"
                   id="email"
                   value={email}
@@ -213,7 +213,7 @@ const JoinUs = () => {
               <div className="relative">
                 <motion.input
                   whileFocus={{ scale: 1.02, borderColor: '#8B5CF6' }}
-                  transition={{ type: 'spring', stiffness: 300 }}
+                  transition={{ type: 'spring', stiffness: 300 } as any}
                   type={showPassword ? 'text' : 'password'}
                   id="password"
                   value={password}
