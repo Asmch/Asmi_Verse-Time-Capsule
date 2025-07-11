@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
     }
 
-    const { searchParams } = new URL(req.url, process.env.NEXTAUTH_URL || 'http://localhost');
+    const { searchParams } = new URL(req.url, 'http://localhost');
     const search = searchParams.get('search') || '';
     const page = parseInt(searchParams.get('page') || '1');
     const limit = parseInt(searchParams.get('limit') || '10');
@@ -62,7 +62,7 @@ export async function DELETE(req: NextRequest) {
       return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
     }
 
-    const { searchParams } = new URL(req.url, process.env.NEXTAUTH_URL || 'http://localhost');
+    const { searchParams } = new URL(req.url, 'http://localhost');
     const capsuleId = searchParams.get('id');
 
     if (!capsuleId) {
