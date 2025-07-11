@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { useAuth } from "@/context/AuthContext";
 import { FaUserCircle, FaSignOutAlt, FaUser, FaHome, FaQuestionCircle, FaPlusCircle, FaBoxOpen } from 'react-icons/fa';
@@ -30,7 +30,7 @@ const Hero = () => {
 
   const navItems = user ? loggedInNavItems : guestNavItems;
 
-  const navItemVariants = {
+  const navItemVariants: Variants = {
     initial: { opacity: 0, y: -10 },
     animate: (i: number) => ({
       opacity: 1,
