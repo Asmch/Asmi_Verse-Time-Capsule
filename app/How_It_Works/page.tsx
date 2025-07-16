@@ -3,6 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaPenFancy, FaLock, FaUserFriends, FaMagic } from 'react-icons/fa';
 import Link from 'next/link';
+import { useAuth } from "@/context/AuthContext";
 
 const steps = [
   {
@@ -32,6 +33,19 @@ const steps = [
 ];
 
 const HowItWorks = () => {
+  const { user } = useAuth();
+  const router = require('next/navigation').useRouter();
+
+  console.log("Current user in HowItWorks:", user);
+
+  const handleGetStarted = () => {
+    if (user) {
+      router.push("/Create");
+    } else {
+      router.push("/JoinUs");
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -93,11 +107,12 @@ const HowItWorks = () => {
       </div>
       {/* CTA Button */}
       <div className="mt-16 z-10 flex justify-center">
-        <Link href="/Create">
-          <button className="bg-gradient-to-r from-purple-600 to-blue-500 text-white font-bold py-4 px-12 rounded-full shadow-xl text-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-purple-400/60 hover:scale-105 hover:shadow-purple-400/40">
-            Get Started
-          </button>
-        </Link>
+        <button
+          className="bg-gradient-to-r from-purple-600 to-blue-500 text-white font-bold py-4 px-12 rounded-full shadow-xl text-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-purple-400/60 hover:scale-105 hover:shadow-purple-400/40"
+          onClick={handleGetStarted}
+        >
+          Get Started
+        </button>
       </div>
       <style jsx global>{`
         .animate-spin-slow {

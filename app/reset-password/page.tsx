@@ -113,8 +113,8 @@ const ResetPasswordPageInner = () => {
                 {isLoading ? "Resetting..." : "Reset Password"}
               </button>
               <div className="text-center pt-2">
-                <Link href="/Login" legacyBehavior>
-                  <a className="text-purple-300 hover:text-purple-100 text-sm font-medium transition-colors">Back to Login</a>
+                <Link href="/Login">
+                  <span className="text-purple-300 hover:text-purple-100 text-sm font-medium transition-colors">Back to Login</span>
                 </Link>
               </div>
             </div>

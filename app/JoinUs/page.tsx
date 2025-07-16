@@ -240,18 +240,16 @@ const JoinUs = () => {
 
             <motion.div variants={itemVariants} className="text-center pt-4">
               <p className="mb-2">Already Registered?</p>
-              <Link href="/Login" legacyBehavior>
-                <a>
-                  <motion.span
-                    variants={buttonVariants}
-                    initial="initial"
-                    whileHover="hover"
-                    whileTap="tap"
-                    className="inline-block bg-purple-800 py-2 px-6 rounded-lg font-medium text-white shadow-lg cursor-pointer"
-                  >
-                    Login
-                  </motion.span>
-                </a>
+              <Link href="/Login">
+                <motion.span
+                  variants={buttonVariants}
+                  initial="initial"
+                  whileHover="hover"
+                  whileTap="tap"
+                  className="inline-block bg-purple-800 py-2 px-6 rounded-lg font-medium text-white shadow-lg cursor-pointer"
+                >
+                  Register
+                </motion.span>
               </Link>
             </motion.div>
           </motion.div>

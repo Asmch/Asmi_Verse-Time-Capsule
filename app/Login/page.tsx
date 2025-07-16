@@ -162,8 +162,8 @@ const LoginPage = () => {
             </motion.div>
 
             <motion.div variants={itemVariants} className="flex justify-end">
-              <Link href="/forgot-password" legacyBehavior>
-                <a className="text-purple-300 hover:text-purple-100 text-sm font-medium transition-colors">Forgot Password?</a>
+              <Link href="/forgot-password">
+                <span className="text-purple-300 hover:text-purple-100 text-sm font-medium transition-colors">Forgot Password?</span>
               </Link>
             </motion.div>
 
@@ -183,18 +183,16 @@ const LoginPage = () => {
 
             <motion.div variants={itemVariants} className="text-center pt-2 sm:pt-4">
               <p className="mb-1 sm:mb-2 text-sm">Not Registered?</p>
-              <Link href="/JoinUs" legacyBehavior>
-                <a>
-                  <motion.span
-                    variants={buttonVariants}
-                    initial="initial"
-                    whileHover="hover"
-                    whileTap="tap"
-                    className="inline-block bg-purple-800 py-2 sm:py-3 px-6 rounded-lg font-medium text-white shadow-lg cursor-pointer focus:ring-2 focus:ring-purple-600 transition-all"
-                  >
-                    Register
-                  </motion.span>
-                </a>
+              <Link href="/JoinUs">
+                <motion.span
+                  variants={buttonVariants}
+                  initial="initial"
+                  whileHover="hover"
+                  whileTap="tap"
+                  className="inline-block bg-purple-800 py-2 sm:py-3 px-6 rounded-lg font-medium text-white shadow-lg cursor-pointer focus:ring-2 focus:ring-purple-600 transition-all"
+                >
+                  Register
+                </motion.span>
               </Link>
             </motion.div>
           </motion.div>
