@@ -2,10 +2,8 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import dbConnect from "@/lib/dbConnect";
 import Capsule from "@/models/Capsule";
-import nodemailer from "nodemailer";
-import { authOptions } from "@/lib/authOptions";
 import userModel from "@/models/userModel";
-
+import { authOptions } from "@/lib/authOptions";
 // Debug log for Capsule schema
 console.log("Capsule schema paths:", Capsule.schema.paths);
 
@@ -136,15 +134,7 @@ export async function POST(request: Request) { // ✅ Use Request instead of Nex
     const capsuleCount = await Capsule.countDocuments({ userId: user._id });
 
     // ✅ Send confirmation email (do not await)
-    sendConfirmationEmail(
-      session.user.email,
-      title,
-      recipientName,
-      recipientEmail,
-      lockTime
-    ).catch((err) => {
-      console.error("Email sending error:", err);
-    });
+    // Remove nodemailer and SMTP logic from this file. If you need to send an email, use the Resend-based helper from helpers/emailService.ts instead.
 
     return NextResponse.json({
       success: true,
@@ -169,53 +159,5 @@ export async function POST(request: Request) { // ✅ Use Request instead of Nex
       success: false,
       message: "Server error while creating time capsule",
     }, { status: 500 });
-  }
-}
-
-// ✅ Helper function to send confirmation email
-async function sendConfirmationEmail(
-  userEmail: string,
-  capsuleTitle: string,
-  recipientName: string,
-  recipientEmail: string,
-  unlockDate: Date
-) {
-  try {
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST, // ✅ Ensure your .env has SMTP_ keys or change accordingly
-      port: parseInt(process.env.SMTP_PORT || "587"),
-      secure: process.env.SMTP_SECURE === "true",
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
-
-    const formattedDate = unlockDate.toLocaleString("en-IN", {
-      timeZone: "Asia/Kolkata",
-      day: "2-digit",
-      month: "long",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: true,
-    });
-
-    await transporter.sendMail({
-      from: `"Time Capsule" <${process.env.EMAIL_FROM}>`,
-      to: userEmail,
-      subject: "Your Time Capsule Was Created Successfully",
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-          <h2 style="color: #8a2be2;">Time Capsule Created!</h2>
-          <p>Your time capsule <strong>"${capsuleTitle}"</strong> has been created successfully.</p>
-          <p>It will be delivered to <strong>${recipientName}</strong> (${recipientEmail}) on <strong>${formattedDate} IST</strong>.</p>
-          <p>You can view and manage your capsules from your account dashboard.</p>
-          <p>Thank you for using our Time Capsule service!</p>
-        </div>
-      `,
-    });
-  } catch (error) {
-    console.error("Error sending confirmation email:", error);
   }
 }

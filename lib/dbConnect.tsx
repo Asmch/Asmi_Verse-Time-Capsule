@@ -3,9 +3,8 @@ import mongoose from "mongoose";
 const MONGODB_URI = process.env.MONGODB_URI as string;
 
 if (!MONGODB_URI) {
-  throw new Error(
-    "Please define the MONGODB_URI environment variable inside .env.local"
-  );
+  console.error("❌ MONGODB_URI is missing in environment variables!");
+  throw new Error("MONGODB_URI is not set");
 }
 
 // Create a global type for caching
@@ -29,6 +28,9 @@ async function dbConnect(): Promise<typeof mongoose> {
   if (!cached.promise) {
     cached.promise = mongoose.connect(MONGODB_URI, {
       bufferCommands: false,
+    }).catch((err) => {
+      console.error("❌ MongoDB connection error:", err);
+      throw err;
     });
   }
 

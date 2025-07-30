@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import User from '@/models/userModel';
 import dbConnect from '@/lib/dbConnect';
 import crypto from 'crypto';
-import sendEmail from '@/helpers/emailService';
+import { sendPasswordResetEmail } from '@/helpers/emailService';
 
 export async function POST(req: NextRequest) {
   try {
@@ -21,12 +21,7 @@ export async function POST(req: NextRequest) {
     user.forgetPasswordTokenExpiry = Date.now() + 1000 * 60 * 60; // 1 hour
     await user.save();
     // Send reset email with the token
-    await sendEmail({
-      email,
-      emailType: 'RESET',
-      userId: user._id,
-      token: resetToken,
-    });
+    await sendPasswordResetEmail(email, resetToken);
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Forgot password error:', error);

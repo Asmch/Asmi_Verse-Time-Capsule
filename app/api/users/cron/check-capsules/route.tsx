@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { connect } from "@/dbConfig/dbConfig";
 import Capsule from "@/models/Capsule";
-import { sendEmail } from "@/helpers/emailService";
+import { sendCapsuleEmail } from "@/helpers/emailService";
 
 // For security, protect this endpoint with a secret key
 export async function GET(req: Request) {
@@ -35,10 +35,10 @@ export async function GET(req: Request) {
       capsulesToDeliver.map(async (capsule:any) => {
         try {
           // Send notification email using new email service
-          await sendEmail({
-            email: capsule.recipientEmail,
-            emailType: 'CAPSULE_UNLOCKED',
-            capsuleData: capsule
+          await sendCapsuleEmail(capsule.recipientEmail, {
+            title: capsule.title,
+            message: capsule.message,
+            unlockDate: capsule.timeLock,
           });
           console.log(`[Delivery Email] Sent to: ${capsule.recipientEmail} for capsule: ${capsule.title}`);
           

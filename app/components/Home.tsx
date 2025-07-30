@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import Toast from './Toast';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
@@ -10,11 +10,11 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 
 const Enhanced3DEffect = ({ handleCTAClick }: { handleCTAClick: () => void }) => {
-  const testimonialVariants = {
+  const testimonialVariants: Variants = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
-    hover: { scale: 1.02, boxShadow: '0 0 20px rgba(128, 0, 255, 0.5)' }
-  } as any;
+    hover: { scale: 1.02 }, // removed boxShadow for type safety
+  };
 
   // Move particles state outside the callback
   type Particle = { width: number; height: number; left: number; top: number; y: number; duration: number; delay: number };
@@ -347,13 +347,13 @@ const App = () => {
 
   useEffect(() => {
     if (session?.user) {
-      fetch("/api/users/dashboard")
-        .then((res) => res.json())
-        .then((data) => {
-          if (data?.success && data.totalCapsules > 0) {
-            // Handle capsules data if needed
-          }
-        });
+      // fetch("/api/users/dashboard")
+      //   .then((res) => res.json())
+      //   .then((data) => {
+      //     if (data?.success && data.totalCapsules > 0) {
+      //       // Handle capsules data if needed
+      //     }
+      //   });
     }
   }, [session]);
 
@@ -442,13 +442,13 @@ export function HomeNavbar() {
   
   useEffect(() => {
     if (session?.user) {
-      fetch("/api/users/dashboard")
-        .then((res) => res.json())
-        .then((data) => {
-          if (data?.success && data.totalCapsules > 0) {
-            // Handle capsules data if needed
-          }
-        });
+      // fetch("/api/users/dashboard")
+      //   .then((res) => res.json())
+      //   .then((data) => {
+      //     if (data?.success && data.totalCapsules > 0) {
+      //       // Handle capsules data if needed
+      //     }
+      //   });
     }
   }, [session]);
 
