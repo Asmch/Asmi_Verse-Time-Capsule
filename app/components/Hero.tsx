@@ -6,7 +6,6 @@ import { motion, Variants } from "framer-motion";
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { useAuth } from "@/context/AuthContext";
 import { FaUserCircle, FaSignOutAlt, FaUser, FaHome, FaQuestionCircle, FaPlusCircle, FaBoxOpen } from 'react-icons/fa';
-import FAQs from "./FAQs";
 import { useRouter } from "next/navigation";
 
 const Hero = () => {
@@ -49,7 +48,7 @@ const Hero = () => {
       <motion.header
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="h-[12vh] w-full bg-white/10 backdrop-blur-lg text-purple-200 flex justify-between items-center border-purple-500/30 border-b-2 px-6 sticky top-0 z-50 relative overflow-hidden"
+        className="h-[12vh] w-full bg-white/10 backdrop-blur-lg text-purple-200 flex justify-between items-center border-purple-500/30 border-b-2 px-6 sticky top-0 z-50 overflow-hidden"
       >
         {/* Animated background shapes */}
         <div className="absolute inset-0 pointer-events-none z-0">

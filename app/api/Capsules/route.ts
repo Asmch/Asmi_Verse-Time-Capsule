@@ -4,8 +4,9 @@ import dbConnect from "@/lib/dbConnect";
 import Capsule from "@/models/Capsule";
 import userModel from "@/models/userModel";
 import { authOptions } from "@/lib/authOptions";
+import { sendCapsuleEmail } from "@/helpers/emailService";
 // Debug log for Capsule schema
-console.log("Capsule schema paths:", Capsule.schema.paths);
+// console.log("Capsule schema paths:", Capsule.schema.paths);
 
 // ✅ Types for API responses
 type CapsuleData = {
@@ -134,7 +135,17 @@ export async function POST(request: Request) { // ✅ Use Request instead of Nex
     const capsuleCount = await Capsule.countDocuments({ userId: user._id });
 
     // ✅ Send confirmation email (do not await)
-    // Remove nodemailer and SMTP logic from this file. If you need to send an email, use the Resend-based helper from helpers/emailService.ts instead.
+    // Call sendCapsuleEmail to send a confirmation email upon capsule creation
+    try {
+      await sendCapsuleEmail(newCapsule.recipientEmail, {
+        title: newCapsule.title,
+        message: newCapsule.message,
+        unlockDate: newCapsule.timeLock,
+      });
+      console.log(`[Capsule Creation] Confirmation email sent to: ${newCapsule.recipientEmail} for capsule: ${newCapsule.title}`);
+    } catch (emailError) {
+      console.error("Error sending capsule creation confirmation email:", emailError);
+    }
 
     return NextResponse.json({
       success: true,
